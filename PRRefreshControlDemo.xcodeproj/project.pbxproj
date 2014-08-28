@@ -21,6 +21,7 @@
 		934B273C19AEBB2300475186 /* PRRefreshControlDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B273B19AEBB2300475186 /* PRRefreshControlDemoTests.m */; };
 		934B275F19AF17CA00475186 /* PRRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B275E19AF17CA00475186 /* PRRefreshControl.m */; };
 		934B276119AF17D400475186 /* PRRefreshControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 934B276019AF17D400475186 /* PRRefreshControl.bundle */; };
+		934B276719AF19E400475186 /* PRRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B276519AF19E400475186 /* PRRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		934B275D19AF17CA00475186 /* PRRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PRRefreshControl.h; path = Classes/PRRefreshControl.h; sourceTree = SOURCE_ROOT; };
 		934B275E19AF17CA00475186 /* PRRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PRRefreshControl.m; path = Classes/PRRefreshControl.m; sourceTree = SOURCE_ROOT; };
 		934B276019AF17D400475186 /* PRRefreshControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PRRefreshControl.bundle; path = Resources/PRRefreshControl.bundle; sourceTree = SOURCE_ROOT; };
+		934B276519AF19E400475186 /* PRRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRRootViewController.m; sourceTree = "<group>"; };
+		934B276619AF19E400475186 /* PRRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRRootViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 			children = (
 				934B275419AF032E00475186 /* Classes */,
 				934B275A19AF176100475186 /* Resources */,
+				934B276519AF19E400475186 /* PRRootViewController.m */,
+				934B276619AF19E400475186 /* PRRootViewController.h */,
 				934B272519AEBB2300475186 /* PRAppDelegate.h */,
 				934B272619AEBB2300475186 /* PRAppDelegate.m */,
 				934B272819AEBB2300475186 /* Images.xcassets */,
@@ -267,6 +272,7 @@
 			files = (
 				934B272719AEBB2300475186 /* PRAppDelegate.m in Sources */,
 				934B272319AEBB2300475186 /* main.m in Sources */,
+				934B276719AF19E400475186 /* PRRootViewController.m in Sources */,
 				934B275F19AF17CA00475186 /* PRRefreshControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +472,7 @@
 				934B274119AEBB2300475186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		934B274219AEBB2300475186 /* Build configuration list for PBXNativeTarget "PRRefreshControlDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +481,7 @@
 				934B274419AEBB2300475186 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

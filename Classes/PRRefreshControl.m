@@ -172,28 +172,12 @@ CGFloat kPRRefreshControlHeight = 50.f;
                             - self.height,
                             CGRectGetWidth(scrollView.frame),
                             self.height);
+    self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                             UIViewAutoresizingFlexibleBottomMargin);
     CGPoint center = self.contentView.center;
     center.y += self.verticalOffset;
     self.arrowImageView.center = center;
     self.activityIndicator.center = center;
-    
-    [scrollView addObserver:self
-                 forKeyPath:@"frame"
-                    options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew
-                    context:nil];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (object == self.scrollView) {
-        UIScrollView *scrollView = self.scrollView;
-        if ([keyPath isEqualToString:@"frame"]) {
-            self.frame = CGRectMake(- scrollView.contentInset.left,
-                                    - self.height,
-                                    CGRectGetWidth([change[NSKeyValueChangeNewKey] CGRectValue]),
-                                    self.height);
-        }
-    }
 }
 
 - (void)scrollViewDidScroll

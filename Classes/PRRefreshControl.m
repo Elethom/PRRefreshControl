@@ -23,7 +23,6 @@ CGFloat kPRRefreshControlHeight = 50.f;
 @property (nonatomic, weak) UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, weak) UIScrollView *scrollView;
-@property (nonatomic, assign) UIEdgeInsets scrollViewContentInset;
 
 @property (nonatomic, assign) BOOL refreshing;
 @property (nonatomic, assign) PRRefreshControlState refreshState;

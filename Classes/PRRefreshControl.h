@@ -15,6 +15,8 @@
 @property (nonatomic, assign) CGFloat height;
 @property (nonatomic, assign) CGFloat verticalOffset;
 
+@property (nonatomic, assign) UIEdgeInsets scrollViewContentInset;
+
 - (UIView *)contentView;
 
 - (void)beginRefreshing;

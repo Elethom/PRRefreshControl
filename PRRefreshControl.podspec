@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PRRefreshControl"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "Yet another and better refresh control for scroll views."
   s.homepage     = "https://github.com/Elethom/PRRefreshControl"
   s.license      = { :type => "MIT", :file => "LICENSE" }
@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://twitter.com/ElethomHunter"
   s.platform     = :ios
   s.ios.deployment_target = "5.0"
-  s.source       = { :git => "https://github.com/Elethom/PRRefreshControl.git", :tag => "0.1.2" }
+  s.source       = { :git => "https://github.com/Elethom/PRRefreshControl.git", :tag => "0.1.3" }
   s.source_files  = "Classes/*.{h,m}"
   s.public_header_files = "Classes/*.h"
   s.resources = "Resources/PRRefreshControl.bundle"

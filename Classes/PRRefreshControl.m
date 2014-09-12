@@ -101,6 +101,41 @@ CGFloat kPRRefreshControlHeight = 50.f;
     _refreshState = refreshState;
 }
 
+#pragma mark - Getters and setters
+
+- (void)setHeight:(CGFloat)height
+{
+    if (_height != height) {
+        _height = height;
+        self.frame = CGRectMake(- self.scrollViewContentInset.left,
+                                - self.height,
+                                CGRectGetWidth(self.scrollView.frame),
+                                self.height);
+    }
+}
+
+- (void)setVerticalOffset:(CGFloat)verticalOffset
+{
+    if (_verticalOffset != verticalOffset) {
+        _verticalOffset = verticalOffset;
+        CGPoint center = self.contentView.center;
+        center.y += self.verticalOffset;
+        self.arrowImageView.center = center;
+        self.activityIndicator.center = center;
+    }
+}
+
+- (void)setScrollViewContentInset:(UIEdgeInsets)scrollViewContentInset
+{
+    if (!UIEdgeInsetsEqualToEdgeInsets(_scrollViewContentInset, scrollViewContentInset)) {
+        _scrollViewContentInset = scrollViewContentInset;
+        self.frame = CGRectMake(- self.scrollViewContentInset.left,
+                                - self.height,
+                                CGRectGetWidth(self.scrollView.frame),
+                                self.height);
+    }
+}
+
 #pragma mark - Life cycle
 
 - (id)init
@@ -167,16 +202,8 @@ CGFloat kPRRefreshControlHeight = 50.f;
     UIScrollView *scrollView = self.scrollView;
     
     self.scrollViewContentInset = scrollView.contentInset;
-    self.frame = CGRectMake(- self.scrollViewContentInset.left,
-                            - self.height,
-                            CGRectGetWidth(scrollView.frame),
-                            self.height);
     self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
                              UIViewAutoresizingFlexibleBottomMargin);
-    CGPoint center = self.contentView.center;
-    center.y += self.verticalOffset;
-    self.arrowImageView.center = center;
-    self.activityIndicator.center = center;
 }
 
 - (void)scrollViewDidScroll

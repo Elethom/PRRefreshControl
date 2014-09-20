@@ -129,11 +129,11 @@ CGFloat kPRRefreshControlHeight = 50.f;
 {
     if (!UIEdgeInsetsEqualToEdgeInsets(_scrollViewContentInset, scrollViewContentInset)) {
         _scrollViewContentInset = scrollViewContentInset;
-        self.frame = CGRectMake(- self.scrollViewContentInset.left,
-                                - self.height,
-                                CGRectGetWidth(self.scrollView.frame),
-                                self.height);
     }
+    self.frame = CGRectMake(- self.scrollViewContentInset.left,
+                            - self.height,
+                            CGRectGetWidth(self.scrollView.frame),
+                            self.height);
 }
 
 #pragma mark - Life cycle

@@ -53,18 +53,20 @@ CGFloat kPRRefreshControlHeight = 50.f;
 - (void)addScrollViewInset
 {
     __weak typeof(self) weakSelf = self;
+    UIEdgeInsets contentInset = self.scrollViewContentInset;
+    contentInset.top += self.height;
+    CGPoint contentOffset = self.scrollView.contentOffset;
     [UIView animateWithDuration:.1f animations:^{
-        UIEdgeInsets contentInset = self.scrollViewContentInset;
-        contentInset.top += self.height;
         weakSelf.scrollView.contentInset = contentInset;
+        weakSelf.scrollView.contentOffset = contentOffset;
     }];
 }
 
 - (void)removeScrollViewInset
 {
     __weak typeof(self) weakSelf = self;
+    UIEdgeInsets contentInset = self.scrollViewContentInset;
     [UIView animateWithDuration:.1f animations:^{
-        UIEdgeInsets contentInset = self.scrollViewContentInset;
         weakSelf.scrollView.contentInset = contentInset;
     }];
 }

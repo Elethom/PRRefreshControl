@@ -58,7 +58,9 @@ CGFloat kPRRefreshControlHeight = 50.f;
     CGPoint contentOffset = self.scrollView.contentOffset;
     [UIView animateWithDuration:.1f animations:^{
         weakSelf.scrollView.contentInset = contentInset;
-        weakSelf.scrollView.contentOffset = contentOffset;
+        if ([[UIDevice currentDevice].systemVersion compare:@"8" options:NSNumericSearch] != NSOrderedAscending) {
+            weakSelf.scrollView.contentOffset = contentOffset;
+        }
     }];
 }
 

@@ -9,6 +9,7 @@
 #import "PRRefreshControl.h"
 
 typedef NS_ENUM(NSUInteger, PRRefreshControlState) {
+    PRRefreshControlStateNone,
     PRRefreshControlStateNormal,
     PRRefreshControlStateReady,
     PRRefreshControlStateRefreshing
@@ -76,10 +77,19 @@ CGFloat kPRRefreshControlHeight = 50.f;
 - (void)setRefreshState:(PRRefreshControlState)refreshState
 {
     switch (refreshState) {
+        case PRRefreshControlStateNone:
+        {
+            [UIView animateWithDuration:.2f animations:^{
+                self.arrowImageView.hidden = YES;
+                self.arrowImageView.transform = CGAffineTransformIdentity;
+            }];
+            [self.activityIndicator stopAnimating];
+            break;
+        }
         case PRRefreshControlStateNormal:
         {
-            self.arrowImageView.hidden = NO;
             [UIView animateWithDuration:.2f animations:^{
+                self.arrowImageView.hidden = NO;
                 self.arrowImageView.transform = CGAffineTransformIdentity;
             }];
             [self.activityIndicator stopAnimating];
@@ -87,8 +97,8 @@ CGFloat kPRRefreshControlHeight = 50.f;
         }
         case PRRefreshControlStateReady:
         {
-            self.arrowImageView.hidden = NO;
             [UIView animateWithDuration:.2f animations:^{
+                self.arrowImageView.hidden = NO;
                 self.arrowImageView.transform = CGAffineTransformMakeRotation(-M_PI);
             }];
             [self.activityIndicator stopAnimating];
@@ -96,8 +106,10 @@ CGFloat kPRRefreshControlHeight = 50.f;
         }
         case PRRefreshControlStateRefreshing:
         {
-            self.arrowImageView.hidden = YES;
-            self.arrowImageView.transform = CGAffineTransformIdentity;
+            [UIView animateWithDuration:.2f animations:^{
+                self.arrowImageView.hidden = YES;
+                self.arrowImageView.transform = CGAffineTransformIdentity;
+            }];
             [self.activityIndicator startAnimating];
             break;
         }
@@ -182,6 +194,8 @@ CGFloat kPRRefreshControlHeight = 50.f;
                                               UIViewAutoresizingFlexibleBottomMargin);
         self.activityIndicator = activityIndicator;
         [contentView addSubview:activityIndicator];
+        
+        self.refreshState = PRRefreshControlStateNone;
     }
     return self;
 }
@@ -221,8 +235,10 @@ CGFloat kPRRefreshControlHeight = 50.f;
     } else if (scrollView.isDragging) {
         if (offset < - self.height) {
             self.refreshState = PRRefreshControlStateReady;
-        } else {
+        } else if (offset < 0) {
             self.refreshState = PRRefreshControlStateNormal;
+        } else {
+            self.refreshState = PRRefreshControlStateNone;
         }
     }
 }
@@ -236,8 +252,6 @@ CGFloat kPRRefreshControlHeight = 50.f;
         if (offset < - self.height) {
             [self beginRefreshing];
             [self sendActionsForControlEvents:UIControlEventValueChanged];
-        } else {
-            self.refreshState = PRRefreshControlStateNormal;
         }
     }
 }

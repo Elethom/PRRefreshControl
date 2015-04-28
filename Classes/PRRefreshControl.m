@@ -31,6 +31,9 @@ CGFloat kPRRefreshControlHeight = 50.f;
 - (void)addScrollViewInset;
 - (void)removeScrollViewInset;
 
+- (void)scrollViewDidScroll;
+- (void)scrollViewDidEndDragging;
+
 @end
 
 @implementation PRRefreshControl
@@ -215,13 +218,47 @@ CGFloat kPRRefreshControlHeight = 50.f;
     
     if ([newSuperview isKindOfClass:UIScrollView.class]) {
         self.scrollView = (UIScrollView *)newSuperview;
+        
+        UIScrollView *scrollView = self.scrollView;
+        
+        self.scrollViewContentInset = scrollView.contentInset;
+        self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                 UIViewAutoresizingFlexibleBottomMargin);
+        
+        [self.scrollView addObserver:self
+                          forKeyPath:NSStringFromSelector(@selector(contentOffset))
+                             options:NSKeyValueObservingOptionNew
+                             context:nil];
+        [self.scrollView.panGestureRecognizer addObserver:self
+                                               forKeyPath:NSStringFromSelector(@selector(state))
+                                                  options:NSKeyValueObservingOptionNew
+                                                  context:nil];
+    } else {
+        [self.scrollView removeObserver:self
+                             forKeyPath:NSStringFromSelector(@selector(contentOffset))];
+        [self.scrollView.panGestureRecognizer removeObserver:self
+                                                  forKeyPath:NSStringFromSelector(@selector(state))];
     }
-    
-    UIScrollView *scrollView = self.scrollView;
-    
-    self.scrollViewContentInset = scrollView.contentInset;
-    self.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-                             UIViewAutoresizingFlexibleBottomMargin);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if (object == self.scrollView) {
+        if ([keyPath isEqualToString:NSStringFromSelector(@selector(contentOffset))]) {
+            [self scrollViewDidScroll];
+        }
+    } else if (object == self.scrollView.panGestureRecognizer) {
+        if ([keyPath isEqualToString:NSStringFromSelector(@selector(state))]) {
+            UIGestureRecognizerState state = [change[NSKeyValueChangeNewKey] integerValue];
+            if (state == UIGestureRecognizerStateEnded ||
+                state == UIGestureRecognizerStateCancelled) {
+                [self scrollViewDidEndDragging];
+            }
+        }
+    }
 }
 
 - (void)scrollViewDidScroll

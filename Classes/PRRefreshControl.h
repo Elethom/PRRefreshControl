@@ -22,7 +22,4 @@
 - (void)beginRefreshing;
 - (void)endRefreshing;
 
-- (void)scrollViewDidScroll;
-- (void)scrollViewDidEndDragging;
-
 @end

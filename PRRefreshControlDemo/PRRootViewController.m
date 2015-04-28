@@ -81,14 +81,8 @@
 
 #pragma mark - Table view data source
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [self.refreshControl scrollViewDidScroll];
-}
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    [self.refreshControl scrollViewDidEndDragging];
     if (self.shouldRefreshData) {
         [self dataDidRefresh];
         self.shouldRefreshData = NO;

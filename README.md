@@ -45,26 +45,6 @@ Setup in `-viewDidLoad` in your view controller class:
 }
 ```
 
-In `UIScrollViewDelegate`:
-
-```
-#pragma mark - UIScrollViewDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (scrollView == self.collectionView) {
-        [self.refreshControl scrollViewDidScroll];
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (scrollView == self.collectionView) {
-        [self.refreshControl scrollViewDidEndDragging];
-    }
-}
-```
-
 Respond to actions:
 
 ```

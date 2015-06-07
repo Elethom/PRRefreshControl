@@ -17,7 +17,9 @@
 
 @property (nonatomic, assign) UIEdgeInsets scrollViewContentInset;
 
-- (UIView *)contentView;
+@property (readonly, nonatomic, weak) UIView *contentView;
+@property (readonly, nonatomic, weak) UIImageView *arrowImageView;
+@property (readonly, nonatomic, weak) UIActivityIndicatorView *activityIndicator;
 
 - (void)beginRefreshing;
 - (void)endRefreshing;

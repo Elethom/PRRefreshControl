@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, PRRefreshControlState) {
     PRRefreshControlStateRefreshing
 };
 
-CGFloat kPRRefreshControlHeight = 50.f;
+CGFloat const kPRRefreshControlHeight = 50.f;
 
 @interface PRRefreshControl ()
 

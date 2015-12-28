@@ -17,6 +17,9 @@ typedef NS_ENUM(NSUInteger, PRRefreshControlState) {
 
 CGFloat const kPRRefreshControlHeight = 50.f;
 
+NSTimeInterval const kPRRefreshControlAnimationIntervalInset = .1f;
+NSTimeInterval const kPRRefreshControlAnimationIntervalArrow = .2f;
+
 @interface PRRefreshControl ()
 
 @property (nonatomic, weak) UIView *contentView;
@@ -49,7 +52,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
 {
     self.refreshing = NO;
     [self removeScrollViewInset];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kPRRefreshControlAnimationIntervalInset * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.refreshState = PRRefreshControlStateNormal;
     });
 }
@@ -60,7 +63,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
     UIEdgeInsets contentInset = self.scrollViewContentInset;
     contentInset.top += self.height;
     CGPoint contentOffset = self.scrollView.contentOffset;
-    [UIView animateWithDuration:.1f animations:^{
+    [UIView animateWithDuration:kPRRefreshControlAnimationIntervalInset animations:^{
         weakSelf.scrollView.contentInset = contentInset;
         if ([[UIDevice currentDevice].systemVersion compare:@"8" options:NSNumericSearch] != NSOrderedAscending) {
             weakSelf.scrollView.contentOffset = contentOffset;
@@ -72,7 +75,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
 {
     __weak typeof(self) weakSelf = self;
     UIEdgeInsets contentInset = self.scrollViewContentInset;
-    [UIView animateWithDuration:.1f animations:^{
+    [UIView animateWithDuration:kPRRefreshControlAnimationIntervalInset animations:^{
         weakSelf.scrollView.contentInset = contentInset;
     }];
 }
@@ -82,7 +85,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
     switch (refreshState) {
         case PRRefreshControlStateNone:
         {
-            [UIView animateWithDuration:.2f animations:^{
+            [UIView animateWithDuration:kPRRefreshControlAnimationIntervalArrow animations:^{
                 self.arrowImageView.hidden = YES;
                 self.arrowImageView.transform = CGAffineTransformIdentity;
             }];
@@ -91,7 +94,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
         }
         case PRRefreshControlStateNormal:
         {
-            [UIView animateWithDuration:.2f animations:^{
+            [UIView animateWithDuration:kPRRefreshControlAnimationIntervalArrow animations:^{
                 self.arrowImageView.hidden = NO;
                 self.arrowImageView.transform = CGAffineTransformIdentity;
             }];
@@ -100,7 +103,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
         }
         case PRRefreshControlStateReady:
         {
-            [UIView animateWithDuration:.2f animations:^{
+            [UIView animateWithDuration:kPRRefreshControlAnimationIntervalArrow animations:^{
                 self.arrowImageView.hidden = NO;
                 self.arrowImageView.transform = CGAffineTransformMakeRotation(-M_PI);
             }];
@@ -109,7 +112,7 @@ CGFloat const kPRRefreshControlHeight = 50.f;
         }
         case PRRefreshControlStateRefreshing:
         {
-            [UIView animateWithDuration:.2f animations:^{
+            [UIView animateWithDuration:kPRRefreshControlAnimationIntervalArrow animations:^{
                 self.arrowImageView.hidden = YES;
                 self.arrowImageView.transform = CGAffineTransformIdentity;
             }];

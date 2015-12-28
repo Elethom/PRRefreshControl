@@ -1,6 +1,6 @@
 //
 //  PRRefreshControl.m
-//  PRRefreshControlDemo
+//  PRRefreshControl
 //
 //  Created by Elethom Hunter on 8/28/14.
 //  Copyright (c) 2014 Project Rhinestone. All rights reserved.
@@ -202,15 +202,6 @@ CGFloat kPRRefreshControlHeight = 50.f;
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {

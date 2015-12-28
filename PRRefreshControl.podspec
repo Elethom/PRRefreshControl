@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "PRRefreshControl"
-  s.version               = "0.2"
+  s.version               = "0.2.1"
   s.summary               = "Yet another and better refresh control for scroll views."
   s.homepage              = "https://github.com/Elethom/PRRefreshControl"
   s.license               = { :type => "MIT", :file => "LICENSE" }

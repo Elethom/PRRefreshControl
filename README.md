@@ -2,8 +2,6 @@
 
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/PRRefreshControl/badge.png)](http://cocoapods.org/?q=PRRefreshControl)
 
-## General
-
 Yet another and better refresh control for scroll views.
 
 ## Installation

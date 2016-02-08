@@ -1,6 +1,11 @@
 # PRRefreshControl
 
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/PRRefreshControl/badge.png)](http://cocoapods.org/?q=PRRefreshControl)
+[![CocoaPods](https://img.shields.io/cocoapods/v/PRRefreshControl.svg)](https://cocoapods.org/pods/PRRefreshControl)
+[![Language](https://img.shields.io/badge/language-Objective--C-blue.svg)](../../search)
+[![License](https://img.shields.io/github/license/Elethom/PRRefreshControl.svg)](/LICENSE)
+
+[![Tweet](https://img.shields.io/twitter/url/http/ElethomHunter.svg?style=social)](https://twitter.com/intent/tweet?text=PRRefreshControl%3A%20Yet%20another%20and%20better%20refresh%20control%20for%20scroll%20views.&url=https%3A%2F%2Fgithub.com%2FElethom%2FPRRefreshControl&via=ElethomHunter)
+[![Twitter](https://img.shields.io/twitter/follow/ElethomHunter.svg?style=social)](https://twitter.com/intent/follow?user_id=1512633926)
 
 Yet another and better refresh control for scroll views.
 

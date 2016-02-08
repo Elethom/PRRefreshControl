@@ -15,7 +15,7 @@ Yet another and better refresh control for scroll views.
 
 In your `Podfile`:
 
-```
+```Ruby
 pod 'PRRefreshControl'
 ```
 
@@ -23,7 +23,7 @@ pod 'PRRefreshControl'
 
 Setup in `-viewDidLoad` in your view controller class:
 
-```
+```Objective-C
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -50,7 +50,7 @@ Setup in `-viewDidLoad` in your view controller class:
 
 Respond to actions:
 
-```
+```Objective-C
 #pragma mark - Data
 
 - (void)dataDidRefresh
